@@ -44,3 +44,44 @@ if(recentGrid){
   })
   .catch(()=>{if(status)status.textContent=isEnglish?'Live repository data is temporarily unavailable. Visit the GitHub profile for the full list.':'Os dados ao vivo estão temporariamente indisponíveis. Acesse o perfil do GitHub para ver todos os repositórios.';});
 }
+
+/* Ferramentas globais: busca rápida e alternância de tema */
+(()=>{
+ const root=document.documentElement,nav=document.querySelector('.nav-inner');
+ if(!nav)return;
+ const stored=(()=>{try{return localStorage.getItem('portfolio-theme')}catch(_){return null}})();
+ if(stored==='dark'||stored==='light')root.dataset.theme=stored;
+ const tools=document.createElement('div');tools.className='nav-tools';
+ const theme=document.createElement('button');theme.className='nav-tool';theme.type='button';theme.setAttribute('aria-label',isEnglish?'Toggle color theme':'Alternar tema');theme.title=isEnglish?'Toggle light/dark theme':'Alternar tema claro/escuro';theme.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>';
+ const search=document.createElement('button');search.className='nav-tool';search.type='button';search.setAttribute('aria-label',isEnglish?'Search the website':'Buscar no site');search.title=isEnglish?'Search (Ctrl/⌘ K)':'Buscar (Ctrl/⌘ K)';search.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><span>⌘K</span>';
+ tools.append(theme,search);const menuButton=nav.querySelector('.menu');nav.insertBefore(tools,menuButton||nav.querySelector('.nav-links'));
+ theme.addEventListener('click',()=>{const next=root.dataset.theme==='light'?'dark':'light';root.dataset.theme=next;try{localStorage.setItem('portfolio-theme',next)}catch(_){}});
+ const dialog=document.createElement('dialog');dialog.className='search-dialog';dialog.setAttribute('aria-label',isEnglish?'Website search':'Busca no site');
+ const shell=document.createElement('div');shell.className='search-shell';const top=document.createElement('div');top.className='search-top';const heading=document.createElement('strong');heading.textContent=isEnglish?'Search the portfolio':'Buscar no portfólio';const close=document.createElement('button');close.className='nav-tool';close.type='button';close.textContent='Esc';close.addEventListener('click',()=>dialog.close());top.append(heading,close);
+ const input=document.createElement('input');input.className='search-input';input.type='search';input.placeholder=isEnglish?'Search projects, skills, pages…':'Busque projetos, tecnologias, páginas…';input.setAttribute('aria-label',input.placeholder);
+ const hint=document.createElement('div');hint.className='search-hint';hint.textContent=isEnglish?'Type to filter · Press Enter to open the first result':'Digite para filtrar · Pressione Enter para abrir o primeiro resultado';
+ const results=document.createElement('div');results.className='search-results';results.setAttribute('role','listbox');shell.append(top,input,hint,results);dialog.append(shell);document.body.append(dialog);
+ const catalog=[
+  ['/','Início / Home','portfólio apresentação Ivan Junior'],
+  ['/projetos.html','Projetos / Projects','Percepta Ceres robô seguidor de linha AprilTag IoT'],
+  ['/laboratorio.html','Laboratório / Lab','artigos experiências Linux ESP32 eletrônica'],
+  ['/trajetoria.html','Trajetória / Career','experiência CR Telecom educação IFBA PIBID'],
+  ['/conquistas.html','Conquistas / Awards','robótica Huawei MRC ERBASE medalhas'],
+  ['/curriculo.html','Currículo / Résumé','formação experiência profissional Lattes'],
+  ['/certificacoes.html','Certificações / Credentials','cursos certificados GPON DmOS'],
+  ['/pesquisa.html','Pesquisa / Research','Aquamind inteligência artificial irrigação'],
+  ['/publicacoes.html','Publicações / Publications','artigos anais FARMER SBC'],
+  ['/galeria.html','Galeria / Gallery','fotos equipes eventos robótica'],
+  ['/github.html','GitHub','repositórios código open source'],
+  ['/contato.html','Contato / Contact','email LinkedIn colaboração'],
+  ['/projetos/percepta.html','Percepta — Smart Wearable','IA Huawei tecnologia assistiva'],
+  ['/projetos/irrigacao-iot.html','Ceres — Irrigação inteligente','IoT automação sensores'],
+  ['/projetos/seguidor-de-linha.html','Robô seguidor de linha','ESP32 PID robótica móvel'],
+  ['https://omnitool.ivanjr.eti.br','OmniTool','ferramentas utilitários'],
+  ['https://services.ivanjr.eti.br','Services','serviços aplicações portal']
+ ];
+ let current=[];
+ function render(query=''){results.replaceChildren();const q=query.trim().toLocaleLowerCase();current=catalog.filter(item=>(item[1]+' '+item[2]).toLocaleLowerCase().includes(q)).slice(0,12);if(!current.length){const empty=document.createElement('div');empty.className='search-empty';empty.textContent=isEnglish?'No results found.':'Nenhum resultado encontrado.';results.append(empty);return;}current.forEach(item=>{const a=document.createElement('a');a.className='search-result';a.href=item[0];a.setAttribute('role','option');const name=document.createElement('strong');name.textContent=item[1];const desc=document.createElement('small');desc.textContent=item[2];a.append(name,desc);results.append(a);});}
+ search.addEventListener('click',()=>{dialog.showModal();input.value='';render();input.focus()});input.addEventListener('input',()=>render(input.value));input.addEventListener('keydown',event=>{if(event.key==='Enter'&&current[0]){event.preventDefault();location.href=current[0][0];}});dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close()});
+ document.addEventListener('keydown',event=>{if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k'){event.preventDefault();if(!dialog.open)search.click();}if(event.key==='Escape'&&dialog.open)dialog.close();});
+})();
