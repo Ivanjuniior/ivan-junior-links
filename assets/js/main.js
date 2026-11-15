@@ -19,3 +19,28 @@ if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&'Intersection
  const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target);}}),{threshold:.08});
  revealItems.forEach((el,i)=>{el.classList.add('reveal');el.style.setProperty('--reveal-delay',Math.min(i%4,3)*65+'ms');revealObserver.observe(el);});
 }else revealItems.forEach(el=>el.classList.add('is-visible'));
+
+/* Repositórios recentes: conteúdo público consultado diretamente na API do GitHub. */
+const recentGrid=document.querySelector('#recent-repositories');
+if(recentGrid){
+ const status=document.querySelector('#recent-repositories-status');
+ fetch('https://api.github.com/users/Ivanjuniior/repos?sort=updated&per_page=30')
+  .then(response=>{if(!response.ok)throw new Error('GitHub API indisponível');return response.json();})
+  .then(repos=>{
+   const recent=repos.filter(repo=>!repo.fork).sort((a,b)=>new Date(b.updated_at)-new Date(a.updated_at)).slice(0,3);
+   if(!recent.length)throw new Error('Nenhum repositório público encontrado');
+   recent.forEach(repo=>{
+    const card=document.createElement('article');card.className='panel repo-card';
+    const tag=document.createElement('div');tag.className='tag';tag.textContent=repo.language||'Projeto';
+    const title=document.createElement('h3');title.textContent=repo.name;
+    const description=document.createElement('p');description.textContent=repo.description|| (isEnglish?'Public repository.':'Repositório público.');
+    const meta=document.createElement('div');meta.className='repo-meta';
+    const stars=document.createElement('span');stars.textContent='★ '+repo.stargazers_count;
+    const forks=document.createElement('span');forks.textContent='⑂ '+repo.forks_count;
+    const link=document.createElement('a');link.className='more';link.href=repo.html_url;link.target='_blank';link.rel='noopener noreferrer';link.textContent=isEnglish?'Open repository ↗':'Abrir repositório ↗';
+    meta.append(stars,forks);card.append(tag,title,description,meta,link);recentGrid.append(card);
+   });
+   if(status)status.textContent=isEnglish?'Latest updated public repositories.':'Repositórios públicos atualizados mais recentemente.';
+  })
+  .catch(()=>{if(status)status.textContent=isEnglish?'Live repository data is temporarily unavailable. Visit the GitHub profile for the full list.':'Os dados ao vivo estão temporariamente indisponíveis. Acesse o perfil do GitHub para ver todos os repositórios.';});
+}
