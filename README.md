@@ -12,19 +12,24 @@ Portfólio pessoal de Ivan Junior, publicado em **https://ivanjr.eti.br/** com G
 - `trajetoria.html`: experiência, formação e conquistas
 - `curriculo.html`: currículo com opção de impressão / salvar em PDF
 - `contato.html`: canais públicos
+- `certificacoes.html`: premiações e reconhecimentos
+- `galeria.html`: galeria de projetos e competições
+- `github.html`: repositórios públicos carregados pela API do GitHub
+- `en/`: apresentação em inglês
+- `sitemap.xml` e `robots.txt`: indexação
 - `assets/css/style.css`: identidade visual e temas automáticos
 - `assets/js/main.js`: navegação mobile e ano dinâmico
 
 ## Tema
 
-O site respeita automaticamente `prefers-color-scheme` do dispositivo. Não há seletor manual de tema.
+O site respeita automaticamente `prefers-color-scheme` do dispositivo. Não há seletor manual de tema. A página GitHub consulta a API pública do GitHub em tempo real; o laboratório oferece busca local de artigos.
 
 ## Publicação
 
 GitHub Pages: branch `main`, pasta raiz `/`.
 Domínio personalizado: `ivanjr.eti.br` (arquivo `CNAME`).
 
-As imagens institucionais de competições estão ligadas às publicações do IFBA e identificadas com suas fontes. O currículo pode ser exportado pelo navegador usando **Salvar como PDF**.
+Currículo Lattes: http://lattes.cnpq.br/8185628072909364. As imagens institucionais de competições estão ligadas às publicações do IFBA e identificadas com suas fontes. O currículo pode ser exportado pelo navegador usando **Salvar como PDF**.
 
 ## Tecnologias
 
