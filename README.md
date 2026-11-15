@@ -12,7 +12,9 @@ Portfólio pessoal de Ivan Junior, publicado em **https://ivanjr.eti.br/** com G
 - `trajetoria.html`: experiência, formação e conquistas
 - `curriculo.html`: currículo com opção de impressão / salvar em PDF
 - `contato.html`: canais públicos
-- `certificacoes.html`: premiações e reconhecimentos
+- `certificacoes.html`: premiações e formação complementar
+- `publicacoes.html`: publicações acadêmicas e produção técnica
+- `pesquisa.html`: projetos de pesquisa Aquamind
 - `galeria.html`: galeria de projetos e competições
 - `github.html`: repositórios públicos carregados pela API do GitHub
 - `en/`: apresentação em inglês
