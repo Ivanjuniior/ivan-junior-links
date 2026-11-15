@@ -9,7 +9,8 @@ Portfólio pessoal de Ivan Junior, publicado em **https://ivanjr.eti.br/** com G
 - `projetos/`: estudos de caso de projetos
 - `laboratorio.html`: índice de artigos e anotações técnicas
 - `laboratorio/`: artigos do laboratório
-- `trajetoria.html`: experiência, formação e conquistas
+- `trajetoria.html`: experiência e formação
+- `conquistas.html`: resultados em competições e premiações
 - `curriculo.html`: currículo com opção de impressão / salvar em PDF
 - `contato.html`: canais públicos
 - `certificacoes.html`: premiações e formação complementar
