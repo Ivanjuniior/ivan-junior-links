@@ -1,38 +1,31 @@
 # Ivan Junior — Portfólio
 
-Site pessoal e portfólio profissional de Ivan Junior, desenvolvido em HTML, CSS e JavaScript puros, sem dependências externas ou etapa de build.
-
-## Publicação — GitHub Pages
-
-- Repositório: https://github.com/Ivanjuniior/ivan-junior-links
-- Branch: `main`
-- Pasta de publicação: `/ (root)`
-- Domínio personalizado: `ivanjr.eti.br`
-
-O arquivo `CNAME` na raiz informa o domínio personalizado ao GitHub Pages.
-
-## DNS do domínio
-
-No provedor DNS de `ivanjr.eti.br`, configure os registros para GitHub Pages conforme a documentação oficial:
-
-- A @ → `185.199.108.153`
-- A @ → `185.199.109.153`
-- A @ → `185.199.110.153`
-- A @ → `185.199.111.153`
-- AAAA @ → `2606:50c0:8000::153`
-- AAAA @ → `2606:50c0:8001::153`
-- AAAA @ → `2606:50c0:8002::153`
-- AAAA @ → `2606:50c0:8003::153`
-
-Remova registros conflitantes para o domínio raiz. Depois, em **Settings → Pages**, confirme **Deploy from a branch → main → /(root)** e o domínio personalizado `ivanjr.eti.br`. Ative **Enforce HTTPS** quando o certificado estiver disponível.
+Portfólio pessoal de Ivan Junior, publicado em **https://ivanjr.eti.br/** com GitHub Pages.
 
 ## Estrutura
 
-- `index.html` — site completo e responsivo.
-- `favicon.svg` — ícone do site.
-- `CNAME` — domínio personalizado do GitHub Pages.
-- `site/` — cópia de compatibilidade para publicação no Cloudflare Pages.
+- `index.html`: página inicial
+- `projetos.html`: catálogo de projetos
+- `projetos/`: estudos de caso de projetos
+- `laboratorio.html`: índice de artigos e anotações técnicas
+- `laboratorio/`: artigos do laboratório
+- `trajetoria.html`: experiência, formação e conquistas
+- `curriculo.html`: currículo com opção de impressão / salvar em PDF
+- `contato.html`: canais públicos
+- `assets/css/style.css`: identidade visual e temas automáticos
+- `assets/js/main.js`: navegação mobile e ano dinâmico
 
-## Conteúdo
+## Tema
 
-Perfil profissional, experiência em redes e telecomunicações, formação, competências técnicas, projetos de robótica/IoT e conquistas em competições. O site não inclui rastreadores nem bibliotecas externas.
+O site respeita automaticamente `prefers-color-scheme` do dispositivo. Não há seletor manual de tema.
+
+## Publicação
+
+GitHub Pages: branch `main`, pasta raiz `/`.
+Domínio personalizado: `ivanjr.eti.br` (arquivo `CNAME`).
+
+As imagens institucionais de competições estão ligadas às publicações do IFBA e identificadas com suas fontes. O currículo pode ser exportado pelo navegador usando **Salvar como PDF**.
+
+## Tecnologias
+
+HTML, CSS e JavaScript puros, sem dependências de build.
