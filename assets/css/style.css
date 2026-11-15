@@ -20,3 +20,8 @@
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s cubic-bezier(.2,.7,.2,1);transition-delay:var(--reveal-delay,0ms)}
 .reveal.is-visible{opacity:1;transform:translateY(0)}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* Destaques de repositórios e refinamentos responsivos */
+.repo-card{display:flex;flex-direction:column;min-height:220px}.repo-card h3{margin:10px 0 7px;overflow-wrap:anywhere}.repo-card p{flex:1}.repo-meta{display:flex;gap:14px;margin-top:15px;color:var(--muted);font:500 .72rem 'DM Mono',monospace}.repo-card .more{align-self:flex-start}
+.quick-access .panel{position:relative;overflow:hidden}.quick-access .panel:after{content:'';position:absolute;right:-30px;top:-38px;width:105px;height:105px;border-radius:50%;border:1px solid color-mix(in srgb,var(--cyan) 25%,transparent);box-shadow:0 0 0 12px color-mix(in srgb,var(--cyan) 5%,transparent),0 0 0 25px color-mix(in srgb,var(--cyan) 3%,transparent);pointer-events:none}
+@media(max-width:680px){.stats{gap:9px}.stat{padding:14px}.stat strong{font-size:1.45rem}.repo-card{min-height:0}.hero h1{font-size:clamp(2.65rem,13vw,4rem)}.actions .btn{flex:1 1 auto}.portrait{width:100%}.section-head h2{max-width:16ch}}
