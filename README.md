@@ -1,30 +1,38 @@
-# Ivan Junior — Links
+# Ivan Junior — Portfólio
 
-Página pessoal de links para Instagram, portfólio e divulgação de conquistas.
+Site pessoal e portfólio profissional de Ivan Junior, desenvolvido em HTML, CSS e JavaScript puros, sem dependências externas ou etapa de build.
+
+## Publicação — GitHub Pages
+
+- Repositório: https://github.com/Ivanjuniior/ivan-junior-links
+- Branch: `main`
+- Pasta de publicação: `/ (root)`
+- Domínio personalizado: `ivanjr.eti.br`
+
+O arquivo `CNAME` na raiz informa o domínio personalizado ao GitHub Pages.
+
+## DNS do domínio
+
+No provedor DNS de `ivanjr.eti.br`, configure os registros para GitHub Pages conforme a documentação oficial:
+
+- A @ → `185.199.108.153`
+- A @ → `185.199.109.153`
+- A @ → `185.199.110.153`
+- A @ → `185.199.111.153`
+- AAAA @ → `2606:50c0:8000::153`
+- AAAA @ → `2606:50c0:8001::153`
+- AAAA @ → `2606:50c0:8002::153`
+- AAAA @ → `2606:50c0:8003::153`
+
+Remova registros conflitantes para o domínio raiz. Depois, em **Settings → Pages**, confirme **Deploy from a branch → main → /(root)** e o domínio personalizado `ivanjr.eti.br`. Ative **Enforce HTTPS** quando o certificado estiver disponível.
 
 ## Estrutura
 
-- `site/index.html` — página principal (HTML, CSS e JavaScript sem dependências)
-- `site/favicon.svg` — ícone do site
-- `site/_headers` — cabeçalhos básicos de segurança para Cloudflare Pages
+- `index.html` — site completo e responsivo.
+- `favicon.svg` — ícone do site.
+- `CNAME` — domínio personalizado do GitHub Pages.
+- `site/` — cópia de compatibilidade para publicação no Cloudflare Pages.
 
-## Publicar no Cloudflare Pages com GitHub
+## Conteúdo
 
-1. Conecte o repositório `ivan-junior-links` em **Workers & Pages → Create application → Pages → Connect to Git**.
-2. Configure o projeto:
-   - **Project name:** `ivan-junior-links`
-   - **Production branch:** `main`
-   - **Framework preset:** `None`
-   - **Build command:** `exit 0`
-   - **Build output directory:** `site`
-3. Clique em **Save and Deploy**.
-
-A cada `git push` para `main`, o Cloudflare fará uma nova publicação automaticamente.
-
-## Domínio próprio
-
-Sugestão de endereço: `links.ivanjr.eti.br`. Depois da primeira publicação, abra **Custom domains → Set up a domain** no projeto Cloudflare Pages e siga a configuração DNS indicada.
-
-## Personalização
-
-Edite `site/index.html`. A página destaca o 2º lugar internacional no MRC, na Grécia, e reúne outras conquistas em robótica. Não utiliza rastreadores, bibliotecas externas ou processo de build. A foto de perfil é carregada do avatar público do GitHub.
+Perfil profissional, experiência em redes e telecomunicações, formação, competências técnicas, projetos de robótica/IoT e conquistas em competições. O site não inclui rastreadores nem bibliotecas externas.
